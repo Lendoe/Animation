@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		
+	</title>
+	
+</head>
+<style type="text/css">
+	body{
+		margin:0;
+		width: 100%;
+		height: 100%;
+	}
+		
+	#myContainer{
+		width:100%;
+		height:700px;
+		position:relative;
+		background-image: url("pumpkin.jpg");
+		background-repeat: no-repeat;
+		background-size: cover;
+
+		/*background-image: no-repeat;*/
+	}
+	#myAnimation{
+		width:200px;
+		height:200px;
+		position:absolute;
+		top:500px;
+		left:10px;
+		background-repeat: no-repeat;
+		background-size: contain;
+
+	}
+</style>
+<script type="text/javascript">
+	function move(){
+		var ballon = document.getElementById("myAnimation");
+		var pos = 10;
+		var id = setInterval(frame,15);
+		function frame(){
+			if(pos==400){
+				clearInterval(id);
+				liftUp();
+
+			}else{
+				pos++;
+				ballon.style.left = pos + 'px';
+			}
+		}
+	}
+
+	function liftUp(){
+		var ballon = document.getElementById("myAnimation");
+		var pos = 400;
+		var uPos = 500;
+		var id = setInterval(frame,15);
+		function frame(){
+			if(pos==850){
+				clearInterval(id);
+
+			}else{
+				pos++;
+				uPos--;
+				ballon.style.left = pos + 'px';
+				ballon.style.top=uPos +'px';
+			}
+		}
+	}
+
+
+</script>
+<body>
+<h1>Lets go for a ride!</h1>
+
+<div> 
+<button onclick="move()">Click Me</button>
+</div>
+<div id="myContainer">
+<img id="myAnimation" src="ballon.png">
+</div>
+
+</body>
+</html>
